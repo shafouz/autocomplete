@@ -1,0 +1,42 @@
+<%= form_with(model: bet) do |form| %>
+
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <% if bet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+
+        <ul>
+          <% bet.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :team1 %>
+      <%= form.text_field :team1 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :team2 %>
+      <%= form.text_field :team2 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :amount %>
+      <%= form.text_field :amount %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </div>
+<% end %>

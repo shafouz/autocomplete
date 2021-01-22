@@ -1,0 +1,11 @@
+<%= form_with(url: query_path, data: { controller: "autocomplete" }) do |form| %>
+  <div class="field">
+    <%= form.text_field :search, autocomplete: "off", data: { autocomplete_target: "query", action: "input->autocomplete#query" } %>
+    <div class="autocomplete" data-autocomplete-target="autocomplete">
+      <%= turbo_frame_tag "teams" do %>
+        <%= render partial: "teams/team", locals: { teams: @teams } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
